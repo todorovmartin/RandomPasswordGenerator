@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Generate a random password here!</p>
+</div>
+
+<select class="form-select" aria-label="Default select example">
+    <option selected>Select Password Length</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+</select>
+
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="">
+    <label class="form-check-label" for="flexCheckDefault">
+        Include Lowercase Letters
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="">
+    <label class="form-check-label" for="flexCheckDefault">
+        Include Uppercase Letters
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="">
+    <label class="form-check-label" for="flexCheckDefault">
+        Include Digits
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="">
+    <label class="form-check-label" for="flexCheckDefault">
+        Default checkbox
+    </label>
+</div>
+
+<button class="btn btn-primary" type="submit">Generate Password</button>
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="@Model.password" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled>
+    <span class="input-group-text" id="basic-addon2">COPY</span>
+</div>
