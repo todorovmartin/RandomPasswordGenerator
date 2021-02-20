@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Password_Generator.Pages
 {
@@ -14,6 +10,15 @@ namespace Password_Generator.Pages
         private readonly RandomPasswordGeneratorService passwordGenerator;
         public string password;
 
+        [BindProperty]
+        public int passwordLength { get; set; }
+        [BindProperty]
+        public bool useLowerCaseIsChecked { get; set; }
+        [BindProperty]
+        public bool useUpperCaseIsChecked { get; set; }
+        [BindProperty]
+        public bool useNumbersIsChecked { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger, RandomPasswordGeneratorService passwordGenerator)
         {
             _logger = logger;
@@ -22,7 +27,15 @@ namespace Password_Generator.Pages
 
         public void OnGet()
         {
-            this.password = passwordGenerator.Test();
+        }
+
+        public IActionResult OnPost()
+        {
+            this.password = passwordGenerator.GeneratePassword(useLowerCaseIsChecked,
+                                                                useUpperCaseIsChecked,
+                                                                useNumbersIsChecked,
+                                                                passwordLength);
+            return Page();
         }
     }
 }
