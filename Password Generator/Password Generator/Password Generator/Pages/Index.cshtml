@@ -7,40 +7,53 @@
 
 @using (Html.BeginForm())
 {
-    <label asp-for="passwordLength">Enter Password Length</label>
-    <input type="text" asp-for="passwordLength">
-    <div class="form-group">
-        <div class="checkbox">
-            <label asp-for="useLowerCaseIsChecked">
-                <input asp-for="useLowerCaseIsChecked" /> Include Lowercase Letters
-            </label>
+    <div class="form-group row">
+        <div class="col-sm-3">Enter Password Length</div>
+        <div class="col-sm-9">
+            <input type="text" asp-for="passwordLength">
         </div>
     </div>
-    <div class="form-group">
-        <div class="checkbox">
-            <label asp-for="useUpperCaseIsChecked">
-                <input asp-for="useUpperCaseIsChecked" /> Include Uppercase Letters
-            </label>
+    <div class="form-group row">
+        <div class="col-sm-3">Include Lowercase Letters</div>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" asp-for="useLowerCaseIsChecked" />
+                <label class="form-check-label" asp-for="useLowerCaseIsChecked">( e.g. abcdefgh )</label>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="checkbox">
-            <label asp-for="useNumbersIsChecked">
-                <input asp-for="useNumbersIsChecked" /> Include Numbers
-            </label>
+    <div class="form-group row">
+        <div class="col-sm-3">Include Uppercase Letters</div>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" asp-for="useUpperCaseIsChecked" />
+                <label class="form-check-label" asp-for="useUpperCaseIsChecked">( e.g. ABCDEFGH)</label>
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        <button type="submit" value="" class="btn btn-primary">Generate Password</button>
+    <div class="form-group row">
+        <div class="col-sm-3">Include Numbers</div>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" asp-for="useNumbersIsChecked" />
+                <label class="form-check-label" asp-for="useNumbersIsChecked">( e.g. 12345678)</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9"><button type="submit" value="" class="btn btn-primary">Generate Password</button></div>
     </div>
 
 }
-
-<div class="input-group mb-3">
-    <input id="generatedPassword" type="text" asp-for="password">
-    <button class="btn btn-secondary" onclick="CopyToClipboard('generatedPassword')">COPY</button>
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label">Your Generated Password</label>
+    <div class="col-sm-9">
+        <input id="generatedPassword" type="text" asp-for="password">
+        <button class="btn btn-secondary" onclick="CopyToClipboard('generatedPassword')">COPY</button>
+    </div>
 </div>
+
 
 <script type="text/javascript">
     //Copy to clipboard function

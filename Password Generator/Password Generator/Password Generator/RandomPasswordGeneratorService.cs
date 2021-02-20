@@ -21,20 +21,17 @@ namespace Password_Generator
             if (useUpperCase) { charSet += UPPER_CAES; }
             if (useNumbers) { charSet += NUMBERS; }
 
+            if (!useLowerCase && !useUpperCase && !useNumbers)
+            {
+                return "Cannot Generate Password";
+            }
+
             for (int i = 0; i < passwordLength; i++)
             {
                 password[i] = charSet[random.Next(charSet.Length - 1)];
             }
 
             return String.Join(null, password);
-        }
-
-        public string Test()
-        {
-            var passwd = new RandomPasswordGeneratorService().GeneratePassword(true, true, true, 15);
-            return passwd;
-        }
-
-        
+        }        
     }
 }
